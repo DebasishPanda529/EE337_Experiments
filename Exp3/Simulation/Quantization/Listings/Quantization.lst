@@ -1,0 +1,78 @@
+A51 MACRO ASSEMBLER  QUANTIZATION                                                         01/21/2023 17:56:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Quantization.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Quantization.a51 SET(SMALL) DEBUG PRINT(.\Listings\Quantization.lst) OB
+                      JECT(.\Objects\Quantization.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL QUANT
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+                       8     
+0130                   9     QUANT:
+                      10     
+0130 7860             11     MOV R0, #60H
+0132 7970             12     MOV R1, #70H
+0134 7A08             13     MOV R2, #08H
+                      14     
+0136 E6               15     L1: MOV A, @R0
+0137 F5F0             16         MOV B, A
+0139 940A             17         SUBB A, #0AH
+013B E5F0             18         MOV A, B
+013D 5004             19         JNC L2
+013F 7705             20         MOV @R1, #05H
+0141 801A             21         SJMP stop
+                      22     
+0143 9414             23     L2: SUBB A, #14H
+0145 E5F0             24         MOV A, B
+0147 5004             25             JNC L3
+0149 770F             26             MOV @R1, #0FH
+014B 8010             27             SJMP stop
+                      28                
+014D 941E             29     L3: SUBB A, #1EH
+014F E5F0             30         MOV A, B
+0151 5004             31         JNC L4
+0153 7719             32             MOV @R1, #19H
+0155 8006             33             SJMP stop
+                      34                
+0157 7723             35     L4: MOV @R1, #23H
+0159 E5F0             36         MOV A, B
+015B 8000             37             SJMP stop
+                      38     
+015D 08               39     stop: INC R0
+015E 09               40           INC R1
+015F 1A               41           DEC R2
+0160 BA00D3           42           CJNE R2, #00H, L1 
+                      43     
+0163 22               44     RET
+                      45     END
+A51 MACRO ASSEMBLER  QUANTIZATION                                                         01/21/2023 17:56:50 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+L1 . . . . . . . .  C ADDR   0136H   A   
+L2 . . . . . . . .  C ADDR   0143H   A   
+L3 . . . . . . . .  C ADDR   014DH   A   
+L4 . . . . . . . .  C ADDR   0157H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+QUANT. . . . . . .  C ADDR   0130H   A   
+STOP . . . . . . .  C ADDR   015DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

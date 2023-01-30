@@ -1,0 +1,75 @@
+A51 MACRO ASSEMBLER  BUBBLESORT                                                           01/17/2023 15:19:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\BubbleSort.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE BubbleSort.a51 SET(SMALL) DEBUG PRINT(.\Listings\BubbleSort.lst) OBJECT
+                      (.\Objects\BubbleSort.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL SORT
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+                       8     
+0130                   9     SORT:
+                      10     
+0130 7B07             11     MOV R3, #07H  
+                      12     
+0132 856070           13     stop:MOV 70H, 60H
+0135 856171           14          MOV 71H, 61H
+0138 856272           15          MOV 72H, 62H
+013B 856373           16          MOV 73H, 63H
+013E 856474           17          MOV 74H, 64H
+0141 856575           18          MOV 75H, 65H
+0144 856676           19          MOV 76H, 66H
+0147 856777           20          MOV 77H, 67H
+014A 80E6             21          SJMP stop
+                      22                
+014C 7960             23     L2:MOV R1, #60H     
+014E AA03             24        MOV R2, 03H   
+                      25     
+0150 1A               26     L1:DEC R2
+0151 C3               27        CLR C
+0152 E7               28        MOV A, @R1       
+0153 09               29        INC R1
+0154 FE               30        MOV R6, A        
+0155 97               31        SUBB A, @R1
+0156 4005             32        JC no_swap
+0158 EE               33        MOV A, R6
+0159 C7               34        XCH A, @R1
+015A 19               35        DEC R1
+015B F7               36        MOV @R1, A
+015C 09               37        INC R1
+                      38                
+015D BA00F0           39     no_swap:CJNE R2, #00H, L1
+0160 1B               40                 DEC R3                
+0161 BB00E8           41                 CJNE R3, #00H, L2  
+                      42     
+0164 22               43     RET
+                      44     END
+A51 MACRO ASSEMBLER  BUBBLESORT                                                           01/17/2023 15:19:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0102H   A   
+L1 . . . . . . . .  C ADDR   0150H   A   
+L2 . . . . . . . .  C ADDR   014CH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NO_SWAP. . . . . .  C ADDR   015DH   A   
+SORT . . . . . . .  C ADDR   0130H   A   
+STOP . . . . . . .  C ADDR   0132H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

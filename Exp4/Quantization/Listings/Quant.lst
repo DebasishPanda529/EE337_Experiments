@@ -1,0 +1,200 @@
+A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Quant.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Quant.a51 SET(SMALL) DEBUG PRINT(.\Listings\Quant.lst) OBJECT(.\Objects
+                      \Quant.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 314F              5     CALL TAKE_INP
+0102 3182              6     CALL QUANT_ENC
+0104 31B6              7     CALL LED_DISP
+0106 80FE              8     HERE: SJMP HERE
+0130                   9     ORG 130H
+                      10     
+0130                  11     DELAY:
+                      12     
+0130 C000             13     PUSH 00H
+0132 78FA             14     MOV R0, #250
+0134 313B             15     h3: ACALL delay_1ms
+0136 D8FC             16         DJNZ R0, h3
+0138 D000             17     POP 00H
+013A 22               18     RET
+                      19             
+013B C000             20     delay_1ms: PUSH 00H
+013D 7804             21                        MOV R0, #4
+013F 3146             22                        h2: ACALL delay_250us
+0141 D8FC             23                        DJNZ R0, h2
+0143 D000             24                        POP 00H
+0145 22               25                        RET
+                      26             
+0146 C000             27     delay_250us: PUSH 00H
+0148 78F4             28                      MOV R0, #244
+014A D8FE             29                      h1: DJNZ R0, h1
+014C D000             30                      POP 00H
+014E 22               31                      RET
+                      32     
+014F                  33     TAKE_INP:
+                      34     
+014F 7A0F             35     MOV R2, #0FH      
+0151 7960             36     MOV R1, #60H      
+0153 7B04             37     MOV R3, #04H
+                      38     
+0155 EA               39     input:  MOV A, R2           
+0156 2410             40                     ADD A, #10H         
+0158 F590             41                     MOV P1, A         
+015A 3177             42                     ACALL delay_10s
+015C FA               43                     MOV R2, A           
+015D E590             44             MOV A, P1         
+015F 540F             45                     ANL A, #0FH       
+0161 C4               46                     SWAP A                 
+                      47                     
+0162 F5F0             48                     MOV B, A           
+0164 EA               49                     MOV A, R2           
+0165 2410             50                     ADD A, #10H         
+0167 F590             51                     MOV P1, A         
+0169 3177             52                     ACALL delay_10s
+016B FA               53                     MOV R2, A           
+016C E590             54                     MOV A, P1         
+016E 540F             55                     ANL A, #0FH      
+                      56                     
+0170 25F0             57                     ADD A, B
+A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     2
+
+                      58                     
+0172 F7               59                     MOV @R1, A 
+0173 09               60                     INC R1      
+0174 DBDF             61                     DJNZ R3, input
+0176 22               62                     RET
+                      63               
+0177                  64     delay_10s:
+0177 C000             65     PUSH 00H
+0179 7828             66     MOV R0, #40
+017B 3130             67     h5: ACALL DELAY
+017D D8FC             68         DJNZ R0, h5
+017F D000             69     POP 00H
+0181 22               70     RET
+                      71     
+0182                  72     QUANT_ENC:
+                      73     
+0182 7860             74     MOV R0, #60H
+0184 7970             75     MOV R1, #70H
+0186 7A04             76     MOV R2, #04H
+                      77     
+0188 E6               78     L1: MOV A, @R0
+0189 F5F0             79         MOV B, A
+018B 940A             80         SUBB A, #0AH
+018D E5F0             81         MOV A, B
+018F 5004             82         JNC L2
+0191 7705             83         MOV @R1, #05H
+0193 801A             84         SJMP stop
+                      85     
+0195 9414             86     L2: SUBB A, #14H
+0197 E5F0             87         MOV A, B
+0199 5004             88             JNC L3
+019B 770F             89             MOV @R1, #0FH
+019D 8010             90             SJMP stop
+                      91                
+019F 941E             92     L3: SUBB A, #1EH
+01A1 E5F0             93         MOV A, B
+01A3 5004             94         JNC L4
+01A5 7719             95             MOV @R1, #19H
+01A7 8006             96             SJMP stop
+                      97                
+01A9 7723             98     L4: MOV @R1, #23H
+01AB E5F0             99         MOV A, B
+01AD 8000            100             SJMP stop
+                     101     
+01AF 08              102     stop: INC R0
+01B0 09              103           INC R1
+01B1 1A              104           DEC R2
+01B2 BA00D3          105           CJNE R2, #00H, L1           
+01B5 22              106           RET
+                     107             
+01B6                 108     LED_DISP:
+                     109     
+01B6 7970            110     MOV R1, #70H
+01B8 7A04            111     MOV R2, #04H
+                     112     
+01BA E7              113     D1: MOV A, @R1
+01BB B40505          114         CJNE A, #05H, D2
+01BE 759010          115             MOV P1, #10H
+01C1 8015            116         SJMP loop
+                     117             
+01C3 B40F05          118     D2: CJNE A, #0FH, D3
+01C6 759020          119         MOV P1, #20H
+01C9 800D            120             SJMP loop
+                     121             
+01CB B41905          122     D3: CJNE A, #19H, D4
+01CE 759040          123         MOV P1, #40H 
+A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     3
+
+01D1 8005            124             SJMP loop
+                     125             
+01D3 759080          126     D4: MOV P1, #80H
+01D6 8000            127         SJMP loop
+                     128             
+01D8 31E1            129     loop: ACALL delay_5s
+01DA 09              130           INC R1
+01DB 1A              131           DEC R2
+01DC BA00DB          132               CJNE R2, #00H, D1
+01DF 31B6            133               ACALL LED_DISP
+                     134     
+01E1                 135     delay_5s: 
+01E1 C000            136     PUSH 00H
+01E3 7814            137     MOV R0, #20
+01E5 3130            138     h4: ACALL DELAY
+01E7 D8FC            139         DJNZ R0, h4
+01E9 D000            140     POP 00H
+01EB 22              141     RET
+                     142     
+                     143     ;RET
+                     144     END
+A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+D1 . . . . . . . .  C ADDR   01BAH   A   
+D2 . . . . . . . .  C ADDR   01C3H   A   
+D3 . . . . . . . .  C ADDR   01CBH   A   
+D4 . . . . . . . .  C ADDR   01D3H   A   
+DELAY. . . . . . .  C ADDR   0130H   A   
+DELAY_10S. . . . .  C ADDR   0177H   A   
+DELAY_1MS. . . . .  C ADDR   013BH   A   
+DELAY_250US. . . .  C ADDR   0146H   A   
+DELAY_5S . . . . .  C ADDR   01E1H   A   
+H1 . . . . . . . .  C ADDR   014AH   A   
+H2 . . . . . . . .  C ADDR   013FH   A   
+H3 . . . . . . . .  C ADDR   0134H   A   
+H4 . . . . . . . .  C ADDR   01E5H   A   
+H5 . . . . . . . .  C ADDR   017BH   A   
+HERE . . . . . . .  C ADDR   0106H   A   
+INPUT. . . . . . .  C ADDR   0155H   A   
+L1 . . . . . . . .  C ADDR   0188H   A   
+L2 . . . . . . . .  C ADDR   0195H   A   
+L3 . . . . . . . .  C ADDR   019FH   A   
+L4 . . . . . . . .  C ADDR   01A9H   A   
+LED_DISP . . . . .  C ADDR   01B6H   A   
+LOOP . . . . . . .  C ADDR   01D8H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+QUANT_ENC. . . . .  C ADDR   0182H   A   
+STOP . . . . . . .  C ADDR   01AFH   A   
+TAKE_INP . . . . .  C ADDR   014FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

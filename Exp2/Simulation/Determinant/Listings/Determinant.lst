@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  DETERMINANT                                                          01/16/2023 16:02:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Determinant.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Determinant.a51 SET(SMALL) DEBUG PRINT(.\Listings\Determinant.lst) OBJE
+                      CT(.\Objects\Determinant.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL DET
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+                       8     
+0130                   9     DET:
+                      10     
+0130 E561             11     MOV A, 61H    
+0132 8562F0           12     MOV B, 62H   
+0135 A4               13     MUL AB
+0136 F561             14     MOV 61H, A   
+0138 85F062           15     MOV 62H, B    
+013B E560             16     MOV A, 60H    
+013D 8563F0           17     MOV B, 63H    
+0140 A4               18     MUL AB 
+0141 9561             19     SUBB A, 61H
+0143 F571             20     MOV 71H, A
+0145 E5F0             21     MOV A, B
+0147 9562             22     SUBB A, 62H
+0149 F570             23     MOV 70H, A
+014B 22               24     RET
+                      25     END
+A51 MACRO ASSEMBLER  DETERMINANT                                                          01/16/2023 16:02:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DET. . . . . . . .  C ADDR   0130H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

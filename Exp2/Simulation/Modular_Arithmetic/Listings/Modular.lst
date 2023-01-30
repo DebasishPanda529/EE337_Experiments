@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  MODULAR                                                              01/16/2023 16:01:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Modular.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Modular.a51 SET(SMALL) DEBUG PRINT(.\Listings\Modular.lst) OBJECT(.\Obj
+                      ects\Modular.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 7961              5     MOV R1, #61H
+0102 3130              6     CALL MODADD
+0104 313E              7     CALL MODSUB
+0106 80FE              8     HERE: SJMP HERE
+0130                   9     ORG 130H
+                      10     
+0130                  11     MODADD:
+                      12     
+0130 E570             13     MOV A, 70H
+0132 8571F0           14     MOV B, 71H
+0135 25F0             15     ADD A, B
+0137 89F0             16     MOV B, R1
+0139 84               17     DIV AB
+013A 85F072           18     MOV 72H, B
+013D 22               19     RET
+013E                  20     MODSUB:
+                      21     
+013E E570             22     MOV A, 70H
+0140 8571F0           23     MOV B, 71H
+0143 95F0             24     SUBB A, B    
+0145 5002             25     JNC carry_check_0
+0147 4007             26     JC carry_check_1
+0149 89F0             27     carry_check_0: MOV B, R1
+014B 84               28                    DIV AB
+014C 85F073           29                    MOV 73H, B
+014F 22               30                    RET
+0150 F8               31     carry_check_1: MOV R0, A  
+0151 7401             32                    MOV A, #01H 
+0153 98               33                    SUBB A, R0    
+0154 89F0             34                    MOV B, R1     
+0156 84               35                    DIV AB        
+0157 E9               36                    MOV A, R1     
+0158 A8F0             37                    MOV R0, B    
+015A 98               38                    SUBB A, R0
+015B F573             39                    MOV 73H, A
+015D 22               40                    RET
+                      41     END
+A51 MACRO ASSEMBLER  MODULAR                                                              01/16/2023 16:01:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CARRY_CHECK_0. . .  C ADDR   0149H   A   
+CARRY_CHECK_1. . .  C ADDR   0150H   A   
+HERE . . . . . . .  C ADDR   0106H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+MODADD . . . . . .  C ADDR   0130H   A   
+MODSUB . . . . . .  C ADDR   013EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

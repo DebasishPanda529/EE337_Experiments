@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  FILTER                                                               01/22/2023 15:28:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Filter.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Filter.a51 SET(SMALL) DEBUG PRINT(.\Listings\Filter.lst) OBJECT(.\Objec
+                      ts\Filter.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL FILT
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+                       8     
+0130                   9     FILT:
+                      10     
+0130 7860             11     MOV R0, #60H
+0132 7970             12     MOV R1, #70H
+0134 7A08             13     MOV R2, #08H
+                      14     
+0136 E6               15     BODY: MOV A, @R0      
+0137 18               16           DEC R0               
+0138 26               17               ADD A, @R0
+0139 FB               18               MOV R3, A       
+013A 18               19               DEC R0
+013B E6               20               MOV A, @R0      
+013C 18               21               DEC R0
+013D 26               22               ADD A, @R0
+013E 2B               23               ADD A, R3
+013F 75F004           24               MOV B, #04H
+0142 84               25               DIV AB
+0143 F7               26               MOV @R1, A
+0144 E8               27               MOV A, R0
+0145 2403             28               ADD A, #03H
+0147 F8               29               MOV R0, A
+0148 8000             30               SJMP STOP
+                      31               
+014A 08               32     STOP: INC R0
+014B 09               33           INC R1
+014C 1A               34               DEC R2
+014D BA00E6           35               CJNE R2, #00H, BODY
+                      36     
+0150 22               37     RET
+                      38     END
+A51 MACRO ASSEMBLER  FILTER                                                               01/22/2023 15:28:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BODY . . . . . . .  C ADDR   0136H   A   
+FILT . . . . . . .  C ADDR   0130H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   014AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
