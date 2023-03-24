@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     1
+A51 MACRO ASSEMBLER  QUANT                                                                01/31/2023 14:44:59 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -44,28 +44,28 @@ LOC  OBJ            LINE     SOURCE
                       34     
 014F 7A0F             35     MOV R2, #0FH      
 0151 7960             36     MOV R1, #60H      
-0153 7B04             37     MOV R3, #04H
+0153 7B04             37     MOV R3, #04H      
                       38     
-0155 EA               39     input:  MOV A, R2           
-0156 2410             40                     ADD A, #10H         
+0155 EA               39     input:  MOV A, R2          
+0156 2410             40                     ADD A, #10H        
 0158 F590             41                     MOV P1, A         
 015A 3177             42                     ACALL delay_10s
-015C FA               43                     MOV R2, A           
+015C FA               43                     MOV R2, A         
 015D E590             44             MOV A, P1         
 015F 540F             45                     ANL A, #0FH       
 0161 C4               46                     SWAP A                 
                       47                     
 0162 F5F0             48                     MOV B, A           
-0164 EA               49                     MOV A, R2           
-0165 2410             50                     ADD A, #10H         
+0164 EA               49                     MOV A, R2          
+0165 2410             50                     ADD A, #10H        
 0167 F590             51                     MOV P1, A         
 0169 3177             52                     ACALL delay_10s
-016B FA               53                     MOV R2, A           
+016B FA               53                     MOV R2, A         
 016C E590             54                     MOV A, P1         
 016E 540F             55                     ANL A, #0FH      
                       56                     
 0170 25F0             57                     ADD A, B
-A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     2
+A51 MACRO ASSEMBLER  QUANT                                                                01/31/2023 14:44:59 PAGE     2
 
                       58                     
 0172 F7               59                     MOV @R1, A 
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
                      121             
 01CB B41905          122     D3: CJNE A, #19H, D4
 01CE 759040          123         MOV P1, #40H 
-A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     3
+A51 MACRO ASSEMBLER  QUANT                                                                01/31/2023 14:44:59 PAGE     3
 
 01D1 8005            124             SJMP loop
                      125             
@@ -154,9 +154,8 @@ LOC  OBJ            LINE     SOURCE
 01E9 D000            140     POP 00H
 01EB 22              141     RET
                      142     
-                     143     ;RET
-                     144     END
-A51 MACRO ASSEMBLER  QUANT                                                                01/30/2023 17:05:08 PAGE     4
+                     143     END
+A51 MACRO ASSEMBLER  QUANT                                                                01/31/2023 14:44:59 PAGE     4
 
 SYMBOL TABLE LISTING
 ------ ----- -------

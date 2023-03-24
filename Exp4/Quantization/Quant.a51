@@ -32,25 +32,25 @@ delay_250us: PUSH 00H
 
 TAKE_INP:
 // ADD YOUR CODE HERE
-MOV R2, #0FH     //FOR COUNTER
+MOV R2, #0FH     //FOR LED
 MOV R1, #60H     //POINTER FOR STORING
-MOV R3, #04H
+MOV R3, #04H     //FOR LOOP
 
-input:  MOV A, R2          //A = 0FH
-		ADD A, #10H        //A = 1FH
+input:  MOV A, R2          
+		ADD A, #10H        
 		MOV P1, A         
 		ACALL delay_10s
-		MOV R2, A          //R2 = 1FH
+		MOV R2, A         
         MOV A, P1         
 		ANL A, #0FH       
 		SWAP A                 
 		//FIRST PART OF INPUT 
 		MOV B, A           
-		MOV A, R2          //A = 1FH
-		ADD A, #10H        //A = 2FH
+		MOV A, R2          
+		ADD A, #10H        
 		MOV P1, A         
 		ACALL delay_10s
-		MOV R2, A          //R2 = 2FH
+		MOV R2, A         
 		MOV A, P1         
 		ANL A, #0FH      
 		//SECOND PART OF INPUT
@@ -140,5 +140,4 @@ h4: ACALL DELAY
 POP 00H
 RET
 
-;RET
 END

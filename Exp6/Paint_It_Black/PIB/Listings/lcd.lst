@@ -1,0 +1,379 @@
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd.l
+                    -st) TABS(2) OBJECT(.\Objects\lcd.obj)
+
+line level    source
+
+   1          #include <at89c5131.h>
+   2          #include "lcd.h"
+   3          
+   4          //code unsigned char display_msg1[]="      Pt-51     ";           //Display msg on 1st line of lcd
+   5          //code unsigned char display_msg2[]="   IIT Bombay   ";           //Display msg on 1st line of lcd
+   6          
+   7          code unsigned char msg1[]=  "I see a red door";           
+   8          code unsigned char msg2_1[]=" And I want it  ";
+   9          code unsigned char msg2_2[]=" painted black/ ";
+  10          code unsigned char msg3_1[]="   No colors    ";
+  11          code unsigned char msg3_2[]="    anymore/    ";
+  12          code unsigned char msg4_1[]="I want them to  ";
+  13          code unsigned char msg4_2[]="  turn black/   ";
+  14          code unsigned char msg5_1[]="I see the girls ";
+  15          code unsigned char msg5_2[]="    walk by/    ";
+  16          code unsigned char msg6_1[]="Dressed in their";
+  17          code unsigned char msg6_2[]="summer clothes/ ";
+  18          code unsigned char msg7_1[]="I have to turn  ";
+  19          code unsigned char msg7_2[]="    my head/    ";
+  20          code unsigned char msg8_1[]="   Until my     ";
+  21          code unsigned char msg8_2[]=" darkness goes/ ";
+  22          code unsigned char msg9_1[]="  I see a line  ";
+  23          code unsigned char msg9_2[]="    of cars/    ";
+  24          code unsigned char msg10_1[]="And they're all ";
+  25          code unsigned char msg10_2[]=" painted black/ ";
+  26          code unsigned char msg11_1[]="  With flowers  ";
+  27          code unsigned char msg11_2[]="  and my love/  ";
+  28          code unsigned char msg12_1[]=" Both never to  ";
+  29          code unsigned char msg12_2[]="  come back/    ";
+  30          code unsigned char msg13_1[]="I've seen people";
+  31          code unsigned char msg13_2[]="turn their heads";
+  32          code unsigned char msg14_1[]="   And quickly  ";
+  33          code unsigned char msg14_2[]="   look away/   ";
+  34          code unsigned char msg15_1[]=" Like a newborn ";
+  35          code unsigned char msg15_2[]="     baby/      ";
+  36          code unsigned char msg16_1[]="It just happens ";
+  37          code unsigned char msg16_2[]="   everyday/    ";
+  38          code unsigned char msg17_1[]=" I look inside  ";
+  39          code unsigned char msg17_2[]="     myself/    ";
+  40          code unsigned char msg18_1[]="And see my heart";
+  41          code unsigned char msg18_2[]="    is black/   ";
+  42          code unsigned char msg19_1[]="    I see my    ";
+  43          code unsigned char msg19_2[]="    red door/   ";
+  44          code unsigned char msg20_1[]=" I must have it ";
+  45          code unsigned char msg20_2[]=" painted black/ ";
+  46          code unsigned char msg21_1[]="Maybe then, I'll";
+  47          code unsigned char msg21_2[]="   fade away/   ";
+  48          code unsigned char msg22_1[]="And not have to ";
+  49          code unsigned char msg22_2[]="face the facts/ ";
+  50          code unsigned char msg23_1[]=" It's not easy  ";
+  51          code unsigned char msg23_2[]="   facing up/   ";
+  52          code unsigned char msg24_1[]="When your whole ";
+  53          code unsigned char msg24_2[]="world is black/ ";
+  54          code unsigned char msg25_1[]="No more will my ";
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 2   
+
+  55          code unsigned char msg25_2[]="   green sea/   ";
+  56          code unsigned char msg26_1[]="   Go turn a    ";
+  57          code unsigned char msg26_2[]="  deeper blue/  ";
+  58          code unsigned char msg27_1[]="I could not fore";
+  59          code unsigned char msg27_2[]="-see this thing/";
+  60          code unsigned char msg28_1[]="  Happening to  ";
+  61          code unsigned char msg28_2[]="      you/      ";
+  62          code unsigned char msg29_1[]="    If I look   ";
+  63          code unsigned char msg29_2[]="  hard enough/  ";
+  64          code unsigned char msg30_1[]="    Into the    ";
+  65          code unsigned char msg30_2[]="  setting sun/  ";
+  66          code unsigned char msg31_1[]="  My love will  ";
+  67          code unsigned char msg31_2[]=" laugh with me/ ";
+  68          code unsigned char msg32_1[]="   Before the   ";
+  69          code unsigned char msg32_2[]=" morning comes/ ";
+  70          code unsigned char msg33_1[]="     I see a    ";
+  71          code unsigned char msg33_2[]="    red door/   ";
+  72          //code unsigned char msg34_1[]="  And I want it ";
+  73          //code unsigned char msg34_2[]=" painted black/ ";
+  74          //code unsigned char msg35_1[]="    No colors   ";
+  75          //code unsigned char msg35_2[]="     anymore/   ";
+  76          //code unsigned char msg36_1[]=" I want them to ";
+  77          //code unsigned char msg36_2[]="   turn black/  ";
+  78          //code unsigned char msg37_1[]="    I see the   ";
+  79          //code unsigned char msg37_2[]=" girls walk by/ ";
+  80          //code unsigned char msg38_1[]="Dressed in their";
+  81          //code unsigned char msg38_2[]="summer clothes/ ";
+  82          //code unsigned char msg39_1[]=" I have to turn ";
+  83          //code unsigned char msg39_2[]="     my head/   ";
+  84          //code unsigned char msg40_1[]="    Until my    ";
+  85          //code unsigned char msg40_2[]=" darkness goes/ ";
+  86          //code unsigned char msg41_1[]="   I wanna see  ";
+  87          //code unsigned char msg41_2[]="   it painted/  ";
+  88          //code unsigned char msg42[]="  Painted black/  ";
+  89          //code unsigned char msg43[]="  Black as night/ ";
+  90          //code unsigned char msg44[]="  Black as coal/  ";
+  91          //code unsigned char msg45_1[]="  I wanna see   ";
+  92          //code unsigned char msg45_2[]="    the sun/    ";
+  93          //code unsigned char msg46_1[]="   Blotted out  ";
+  94          //code unsigned char msg46_2[]="  from the sky/ ";
+  95          //code unsigned char msg47_1[]=" I wanna see it ";
+  96          //code unsigned char msg47_2[]="    painted,    ";
+  97          //code unsigned char msg47_3[]="    painted,    ";
+  98          //code unsigned char msg47_4[]="    painted/    ";
+  99          //code unsigned char msg48_1[]=" Painted black, ";
+ 100          //code unsigned char msg48_2[]="     yeah/      ";
+ 101          
+ 102          unsigned int t=3000;
+ 103          
+ 104          void main()
+ 105          {
+ 106   1        lcd_init();
+ 107   1        lcd_cmd(0x80);                          
+ 108   1        msdelay(4);
+ 109   1        lcd_write_string(msg1);
+ 110   1        msdelay(t);
+ 111   1        lcd_cmd(0x80);                          
+ 112   1        msdelay(4);
+ 113   1        lcd_write_string(msg2_1);
+ 114   1        lcd_cmd(0xC0);                          
+ 115   1        msdelay(4);
+ 116   1        lcd_write_string(msg2_2);
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 3   
+
+ 117   1        msdelay(t);
+ 118   1        lcd_cmd(0x80);                          
+ 119   1        msdelay(4);
+ 120   1        lcd_write_string(msg3_1);
+ 121   1        lcd_cmd(0xC0);                          
+ 122   1        msdelay(4);
+ 123   1        lcd_write_string(msg3_2);
+ 124   1        msdelay(t);
+ 125   1        lcd_cmd(0x80);                          
+ 126   1        msdelay(4);
+ 127   1        lcd_write_string(msg4_1);
+ 128   1        lcd_cmd(0xC0);                          
+ 129   1        msdelay(4);
+ 130   1        lcd_write_string(msg4_2);
+ 131   1        msdelay(t);
+ 132   1        lcd_cmd(0x80);                          
+ 133   1        msdelay(4);
+ 134   1        lcd_write_string(msg5_1);
+ 135   1        lcd_cmd(0xC0);                          
+ 136   1        msdelay(4);
+ 137   1        lcd_write_string(msg5_2);
+ 138   1        msdelay(t);
+ 139   1        lcd_cmd(0x80);                          
+ 140   1        msdelay(4);
+ 141   1        lcd_write_string(msg6_1);
+ 142   1        lcd_cmd(0xC0);                          
+ 143   1        msdelay(4);
+ 144   1        lcd_write_string(msg6_2);
+ 145   1        msdelay(t);
+ 146   1        lcd_cmd(0x80);                          
+ 147   1        msdelay(4);
+ 148   1        lcd_write_string(msg7_1);
+ 149   1        lcd_cmd(0xC0);                          
+ 150   1        msdelay(4);
+ 151   1        lcd_write_string(msg7_2);
+ 152   1        msdelay(t); 
+ 153   1        lcd_cmd(0x80);                          
+ 154   1        msdelay(4);
+ 155   1        lcd_write_string(msg8_1);
+ 156   1        lcd_cmd(0xC0);                          
+ 157   1        msdelay(4);
+ 158   1        lcd_write_string(msg8_2);
+ 159   1        msdelay(t);
+ 160   1        lcd_cmd(0x80);                          
+ 161   1        msdelay(4);
+ 162   1        lcd_write_string(msg9_1);
+ 163   1        lcd_cmd(0xC0);                          
+ 164   1        msdelay(4);
+ 165   1        lcd_write_string(msg9_2);
+ 166   1        msdelay(t);
+ 167   1        lcd_cmd(0x80);                          
+ 168   1        msdelay(4);
+ 169   1        lcd_write_string(msg10_1);
+ 170   1        lcd_cmd(0xC0);                          
+ 171   1        msdelay(4);
+ 172   1        lcd_write_string(msg10_2);
+ 173   1        msdelay(t);
+ 174   1        lcd_cmd(0x80);                          
+ 175   1        msdelay(4);
+ 176   1        lcd_write_string(msg11_1);
+ 177   1        lcd_cmd(0xC0);                          
+ 178   1        msdelay(4);
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 4   
+
+ 179   1        lcd_write_string(msg11_2);
+ 180   1        msdelay(t);
+ 181   1        lcd_cmd(0x80);                          
+ 182   1        msdelay(4);
+ 183   1        lcd_write_string(msg12_1);
+ 184   1        lcd_cmd(0xC0);                          
+ 185   1        msdelay(4);
+ 186   1        lcd_write_string(msg12_2);
+ 187   1        msdelay(t);
+ 188   1        lcd_cmd(0x80);                          
+ 189   1        msdelay(4);
+ 190   1        lcd_write_string(msg13_1);
+ 191   1        lcd_cmd(0xC0);                          
+ 192   1        msdelay(4);
+ 193   1        lcd_write_string(msg13_2);
+ 194   1        msdelay(t);
+ 195   1        lcd_cmd(0x80);                          
+ 196   1        msdelay(4);
+ 197   1        lcd_write_string(msg14_1);
+ 198   1        lcd_cmd(0xC0);                          
+ 199   1        msdelay(4);
+ 200   1        lcd_write_string(msg14_2);
+ 201   1        msdelay(t);
+ 202   1        lcd_cmd(0x80);                          
+ 203   1        msdelay(4);
+ 204   1        lcd_write_string(msg15_1);
+ 205   1        lcd_cmd(0xC0);                          
+ 206   1        msdelay(4);
+ 207   1        lcd_write_string(msg15_2);
+ 208   1        msdelay(t);
+ 209   1        lcd_cmd(0x80);                          
+ 210   1        msdelay(4);
+ 211   1        lcd_write_string(msg16_1);
+ 212   1        lcd_cmd(0xC0);                          
+ 213   1        msdelay(4);
+ 214   1        lcd_write_string(msg16_2);
+ 215   1        msdelay(t);
+ 216   1        lcd_cmd(0x80);                          
+ 217   1        msdelay(4);
+ 218   1        lcd_write_string(msg17_1);
+ 219   1        lcd_cmd(0xC0);                          
+ 220   1        msdelay(4);
+ 221   1        lcd_write_string(msg17_2);
+ 222   1        msdelay(t);
+ 223   1        lcd_cmd(0x80);                          
+ 224   1        msdelay(4);
+ 225   1        lcd_write_string(msg18_1);
+ 226   1        lcd_cmd(0xC0);                          
+ 227   1        msdelay(4);
+ 228   1        lcd_write_string(msg18_2);
+ 229   1        msdelay(t);
+ 230   1        lcd_cmd(0x80);                          
+ 231   1        msdelay(4);
+ 232   1        lcd_write_string(msg19_1);
+ 233   1        lcd_cmd(0xC0);                          
+ 234   1        msdelay(4);
+ 235   1        lcd_write_string(msg19_2);
+ 236   1        msdelay(t);
+ 237   1        lcd_cmd(0x80);                          
+ 238   1        msdelay(4);
+ 239   1        lcd_write_string(msg20_1);
+ 240   1        lcd_cmd(0xC0);                          
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 5   
+
+ 241   1        msdelay(4);
+ 242   1        lcd_write_string(msg20_2);
+ 243   1        msdelay(t);
+ 244   1        lcd_cmd(0x80);                          
+ 245   1        msdelay(4);
+ 246   1        lcd_write_string(msg21_1);
+ 247   1        lcd_cmd(0xC0);                          
+ 248   1        msdelay(4);
+ 249   1        lcd_write_string(msg21_2);
+ 250   1        msdelay(t);
+ 251   1        lcd_cmd(0x80);                          
+ 252   1        msdelay(4);
+ 253   1        lcd_write_string(msg22_1);
+ 254   1        lcd_cmd(0xC0);                          
+ 255   1        msdelay(4);
+ 256   1        lcd_write_string(msg22_2);
+ 257   1        msdelay(t);
+ 258   1        lcd_cmd(0x80);                          
+ 259   1        msdelay(4);
+ 260   1        lcd_write_string(msg23_1);
+ 261   1        lcd_cmd(0xC0);                          
+ 262   1        msdelay(4);
+ 263   1        lcd_write_string(msg23_2);
+ 264   1        msdelay(t);
+ 265   1        lcd_cmd(0x80);                          
+ 266   1        msdelay(4);
+ 267   1        lcd_write_string(msg24_1);
+ 268   1        lcd_cmd(0xC0);                          
+ 269   1        msdelay(4);
+ 270   1        lcd_write_string(msg24_2);
+ 271   1        msdelay(t);
+ 272   1      //  lcd_cmd(0x80);                          
+ 273   1      //  msdelay(4);
+ 274   1      //  lcd_write_string(msg25_1);
+ 275   1      //  lcd_cmd(0xC0);                          
+ 276   1      //  msdelay(4);
+ 277   1      //  lcd_write_string(msg25_2);
+ 278   1      //  msdelay(5000);
+ 279   1      //  lcd_cmd(0x80);                          
+ 280   1      //  msdelay(4);
+ 281   1      //  lcd_write_string(msg26_1);
+ 282   1      //  lcd_cmd(0xC0);                          
+ 283   1      //  msdelay(4);
+ 284   1      //  lcd_write_string(msg26_2);
+ 285   1      //  msdelay(5000);
+ 286   1      //  lcd_cmd(0x80);                          
+ 287   1      //  msdelay(4);
+ 288   1      //  lcd_write_string(msg27_1);
+ 289   1      //  lcd_cmd(0xC0);                          
+ 290   1      //  msdelay(4);
+ 291   1      //  lcd_write_string(msg27_2);
+ 292   1      //  msdelay(5000);
+ 293   1      //  lcd_cmd(0x80);                          
+ 294   1      //  msdelay(4);
+ 295   1      //  lcd_write_string(msg28_1);
+ 296   1      //  lcd_cmd(0xC0);                          
+ 297   1      //  msdelay(4);
+ 298   1      //  lcd_write_string(msg28_2);
+ 299   1      //  msdelay(5000);
+ 300   1      //  lcd_cmd(0x80);                          
+ 301   1      //  msdelay(4);
+ 302   1      //  lcd_write_string(msg29_1);
+C51 COMPILER V9.60.7.0   LCD                                                               02/28/2023 16:11:39 PAGE 6   
+
+ 303   1      //  lcd_cmd(0xC0);                          
+ 304   1      //  msdelay(4);
+ 305   1      //  lcd_write_string(msg29_2);
+ 306   1      //  msdelay(5000);
+ 307   1      //  lcd_cmd(0x80);                          
+ 308   1      //  msdelay(4);
+ 309   1      //  lcd_write_string(msg30_1);
+ 310   1      //  lcd_cmd(0xC0);                          
+ 311   1      //  msdelay(4);
+ 312   1      //  lcd_write_string(msg30_2);
+ 313   1      //  msdelay(5000);
+ 314   1      //  lcd_cmd(0x80);                          
+ 315   1      //  msdelay(4);
+ 316   1      //  lcd_write_string(msg31_1);
+ 317   1      //  lcd_cmd(0xC0);                          
+ 318   1      //  msdelay(4);
+ 319   1      //  lcd_write_string(msg31_2);
+ 320   1      //  msdelay(5000);
+ 321   1      //  lcd_cmd(0x80);                          
+ 322   1      //  msdelay(4);
+ 323   1      //  lcd_write_string(msg32_1);
+ 324   1      //  lcd_cmd(0xC0);                          
+ 325   1      //  msdelay(4);
+ 326   1      //  lcd_write_string(msg32_2);
+ 327   1      //  msdelay(5000);
+ 328   1      //  lcd_cmd(0x80);                          
+ 329   1      //  msdelay(4);
+ 330   1      //  lcd_write_string(msg33_1);
+ 331   1      //  lcd_cmd(0xC0);                          
+ 332   1      //  msdelay(4);
+ 333   1      //  lcd_write_string(msg33_2);
+ 334   1      //  msdelay(5000);
+ 335   1      //  lcd_cmd(0x80);                          
+ 336   1      //  msdelay(4);
+ 337   1      //  lcd_write_string(msg34_1);
+ 338   1      //  lcd_cmd(0xC0);                          
+ 339   1      //  msdelay(4);
+ 340   1      //  lcd_write_string(msg34_2);
+ 341   1      //  msdelay(5000);
+ 342   1        
+ 343   1        while(1);
+ 344   1          
+ 345   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    800    ----
+   CONSTANT SIZE    =   1105    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
